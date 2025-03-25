@@ -1,0 +1,144 @@
+#root, html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.app {
+  height: 100%;
+  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url('./city.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  width: 100%;
+  gap: 4rem;
+}
+
+.nav-button {
+  padding: 0.8rem 2rem;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+.nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.nav-button.active {
+  background-color: white;
+  color: #164ca7;
+}
+
+.card {
+  background: whitesmoke;
+  width: 40%;
+  max-width: 600px;
+  min-height: 250px; /* Adjust the minimum height to make it flexible */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures space between heading and button */
+  border-radius: 25px;
+  padding: 2%;
+  box-shadow: 10px 10px;
+  text-align: center;
+}
+
+.heading {
+  flex-grow: 1; /* Allow heading to take up space as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.button {
+  position: relative;
+  outline: none;
+  text-decoration: none;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  height: 60px; /* Adjusted height for the button */
+  width: 180px; /* Adjusted width for the button */
+  opacity: 1;
+  background-color: #ffffff;
+  border: 1px solid rgba(22, 76, 167, 0.6);
+  margin-top: 10px; /* Add space between heading and button */
+}
+
+.button span {
+  color: #164ca7;
+  font-size: 14px; /* Adjusted font size for the button text */
+  font-weight: 500;
+  letter-spacing: 0.7px;
+}
+
+.button:hover {
+  animation: rotate 0.7s ease-in-out both;
+}
+
+.button:hover span {
+  animation: storm 0.7s ease-in-out both;
+  animation-delay: 0.06s;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+  25% {
+    transform: rotate(3deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(-3deg) translate3d(0, 0, 0);
+  }
+  75% {
+    transform: rotate(1deg) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes storm {
+  0% {
+    transform: translate3d(0, 0, 0) translateZ(0);
+  }
+  25% {
+    transform: translate3d(4px, 0, 0) translateZ(0);
+  }
+  50% {
+    transform: translate3d(-3px, 0, 0) translateZ(0);
+  }
+  75% {
+    transform: translate3d(2px, 0, 0) translateZ(0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) translateZ(0);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    width: 80%;
+    height: auto; /* Allow height to adjust based on content */
+  }
+}
