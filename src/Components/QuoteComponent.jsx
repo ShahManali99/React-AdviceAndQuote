@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import twitter_icon from '../assets/twitter.png'
 import './QuoteComponent.css'
 
-const QuoteComponent = ({loading, setLoading, getQuote, quote, author}) => {
+const QuoteComponent = ({loading, getQuote, quote, author}) => {
 
     const handleTwitterBtn = () => {
       window.open(`https://x.com/intent/post?text=${quote} - ${author}`)
