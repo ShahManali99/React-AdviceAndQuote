@@ -1,38 +1,39 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './App.css'
-import { fetchAdvice } from './Api'
+import AdviceComponent from './Components/AdviceComponent'
+import QuoteComponent from './Components/QuoteComponent'
+import { fetchQuote } from './Api'
 
 function App() {
-  const [advice, setAdvice] = useState('')
   const [loading, setLoading] = useState(true)
-  const [trigger, setTrigger] = useState(false)
-  useEffect(()=>{
-    const getAdvice = async()=> {
-      try {
-        const res = await fetchAdvice();
-        setAdvice(res.slip.advice);
-      } catch(err) {
-        console.log(err);
-      } finally {
-        setLoading(false)
-      }
+  const [adviceBtn, setAdviceBtn] = useState(true)
+  const [quote, setQuote] = useState('')
+  const [author, setAuthor] = useState('')
+
+  const getQuote = async()=> {
+    try {
+      const res = await fetchQuote();
+      console.log(res[0].quote)
+      console.log(res[0].author)
+      setQuote(res[0].quote)
+      setAuthor(res[0].author)
+    } catch(err) {
+      console.log(err);
+    } finally {
+      {setLoading(false)}
+      setAdviceBtn(false)
     }
-    getAdvice()
-    setTrigger(false)
-  },[trigger])
+  }
+
   return (
     <>
       <div className='app'>
         <div className='navigation'>
-          <button className='nav-button'>Advice</button>
-          <button className='nav-button'>Quote</button>
+          <button className='nav-button' onClick={()=>{setAdviceBtn(true)}}>Advice</button>
+          <button className='nav-button' onClick={getQuote}>Quote</button>
         </div>
-        <div className='card'>
-          <h1 className='heading'>{loading?'Loading...':advice}</h1>
-          <button className='button' onClick={()=>{setTrigger(true)}}>
-            <span>Get Advice!</span>
-          </button>
-        </div>
+        {adviceBtn?<AdviceComponent loading={loading} setLoading={setLoading}/>:
+          <QuoteComponent loading={loading} setLoading={setLoading} getQuote={getQuote} quote={quote} author={author}/>}
       </div>
     </>
   )

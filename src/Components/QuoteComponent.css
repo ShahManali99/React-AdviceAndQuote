@@ -1,0 +1,37 @@
+.heading {
+    margin: 0px;
+}
+
+.line {
+    height: 1.5px;
+    background-color: #ccc;
+    margin: 1rem 0;
+    width: 480px;
+}
+
+.bottom {
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+margin: 0px;
+gap: 20px;
+}
+
+.author {
+font-style: italic;
+color: #555;
+margin: 0px;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+.icons {
+display: flex;
+}
+
+.icons img {
+width: 48px;
+height: 48px;
+cursor: pointer;
+}
